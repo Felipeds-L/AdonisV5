@@ -9,19 +9,20 @@ export default class PostsController {
     return posts;
   }
 
-  public async create ({ request }: HttpContextContract) {
+  public async create ({}: HttpContextContract) {
+  }
+
+  public async store ({ request }: HttpContextContract) {
 
     const data = request.only([
       'title',
-      'description'
+      'content',
+      'user_id'
     ]);
 
     const post = await Post.create(data);
 
     return post;
-  }
-
-  public async store ({}: HttpContextContract) {
   }
 
   public async show ({ params }: HttpContextContract) {
@@ -38,7 +39,8 @@ export default class PostsController {
     const post = await Post.findOrFail(params.id);
     const data = request.only([
       'title',
-      'description'
+      'content',
+      'user_id'
     ]);
 
     post.merge(data);
