@@ -24,4 +24,6 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.resource('/posts', 'postsController').apiOnly()
+Route.resource('/posts', 'PostsController').apiOnly();
+Route.resource('/users', 'UsersController').apiOnly();
+Route.resource('/comentarios', 'ComentariosController').apiOnly();
